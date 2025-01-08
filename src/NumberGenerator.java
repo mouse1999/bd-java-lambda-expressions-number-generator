@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.function.Supplier;
 
 /**
@@ -23,16 +24,16 @@ public class NumberGenerator {
      * @return a new list of 5 random integers, where 0 <= value <= 499.
      */
     public List<Integer> generateNumbers() {
-        // TODO: replace second argument with a lambda expression that implements Supplier<Integer>
-        return populateNumbers(5, null);
+
+        return populateNumbers(5, () -> new Random().nextInt(500));
     }
 
     private List<Integer> populateNumbers(int size, Supplier<Integer> numberGenerator) {
         List<Integer> numbers = new ArrayList<>();
 
         for (int i = 0; i < size; i++) {
-            // TODO: Replace argument to add() with a call to numberGenerator's method
-            numbers.add(-1);
+
+            numbers.add(numberGenerator.get());
         }
 
         return numbers;
